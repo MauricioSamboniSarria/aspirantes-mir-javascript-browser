@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Palindromo</title>
+  </head>
+  <body>
+    <label for="texto">Escribe algo:</label>
+    <input type="text" id="texto">
+    <button class="btn" onclick="palindromo()">Validar</button>
+    <p id="resultado"></p>
+
+    <script>
+        function palindromo(){
+            const input = document.querySelector('#texto');
+            const resultado = document.querySelector('#resultado');
+        
+            // Paso la frase a minusculas y quito espacios
+            fraseUsuario = input.value.toLowerCase().replace(/\s/g,"");
+            /* Creo otra frase partiendo de la de frase pero
+            la convierto en array, le doy la vuelta al array, lo paso a string*/
+            fraseReverse = fraseUsuario.split("").reverse().toString();
+            // Le quito las "," con un remplace dentro del for
+            // Lo igualo a -1 ya que tiene una coma menos que el número total de letras
+            for (let i = 0; i < ((fraseReverse.length)-1); i++) {
+                fraseReverse = fraseReverse.replace(",","");
+            };
+            // Comparo las dos frases.
+            const resultado1 = fraseUsuario==fraseReverse ? "es un Palindromo" : "no es un Palindromo";
+            const texto = resultado1
+            // Muestro el resultado
+            resultado.textContent = texto;
+        }          
+    </script>
+   
+  </body>
+</html>
